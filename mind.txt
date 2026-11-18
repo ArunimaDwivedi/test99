@@ -1,0 +1,188 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node
+{
+    int data;
+    struct node *next;
+};
+
+struct node *head = NULL;
+
+void create()
+{
+    struct node *newnode, *temp;
+
+    newnode = (struct node*)malloc(sizeof(struct node));
+
+    printf("Enter data: ");
+    scanf("%d", &newnode->data);
+
+    newnode->next = NULL;
+
+    if(head == NULL)
+        head = temp = newnode;
+    else
+    {
+        temp->next = newnode;
+        temp = newnode;
+    }
+}
+
+void delete()
+{
+    struct node *temp;
+
+    if(head == NULL)
+    {
+        printf("List empty\n");
+        return;
+    }
+
+    temp = head;
+    head = head->next;
+    free(temp);
+
+    printf("Node deleted\n");
+}
+
+void display()
+{
+    struct node *temp = head;
+
+    while(temp != NULL)
+    {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+
+    printf("NULL\n");
+}
+
+int main()
+{
+    create();
+    create();
+    create();
+
+    display();
+
+    delete();
+
+    display();
+
+    return 0;
+}
+
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node
+{
+    int data;
+    struct node *next;
+};
+
+struct node *head = NULL;
+
+void insert()
+{
+    struct node *newnode;
+
+    newnode = (struct node*)malloc(sizeof(struct node));
+
+    printf("Enter data: ");
+    scanf("%d", &newnode->data);
+
+    newnode->next = head;
+    head = newnode;
+}
+
+void display()
+{
+    struct node *temp = head;
+
+    while(temp != NULL)
+    {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+
+    printf("NULL\n");
+}
+
+int main()
+{
+    insert();
+    insert();
+    insert();
+
+    display();
+
+    return 0;
+}
+
+#include <stdio.h>
+
+int main()
+{
+    int arr[10], n, i;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter elements:\n");
+
+    for(i = 0; i < n; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Array elements are:\n");
+
+    for(i = 0; i < n; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+
+#include <stdio.h>
+
+int main()
+{
+    int arr[10], n, i;
+    int max, min;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter the numbers:\n");
+
+    for(i = 0; i < n; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+
+    max = arr[0];
+    min = arr[0];
+
+    for(i = 1; i < n; i++)
+    {
+        if(arr[i] > max)
+            max = arr[i];
+
+        if(arr[i] < min)
+            min = arr[i];
+    }
+
+    printf("Greatest number = %d\n", max);
+    printf("Smallest number = %d\n", min);
+
+    return 0;
+}
